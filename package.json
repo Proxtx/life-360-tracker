@@ -1,0 +1,23 @@
+{
+  "name": "life-360-tracker",
+  "version": "1.0.0",
+  "description": "Saves the location of your family",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "test": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Proxtx/life-360-tracker.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Proxtx/life-360-tracker/issues"
+  },
+  "homepage": "https://github.com/Proxtx/life-360-tracker#readme",
+  "dependencies": {
+    "life360-node-api": "0.0.10"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "email": "email",
+  "password": "pwd",
+  "fullDataInterval": 3600000,
+  "locationInterval": 300000,
+  "fileChangeInterval": 86400000
+}
