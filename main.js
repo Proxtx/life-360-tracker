@@ -35,6 +35,7 @@ await new Promise((r) => fileLoop(r));
 
 const dataLoop = async () => {
   while (true) {
+    console.log("Data update");
     let members = await myCircle.listMembers();
     let date = Date.now();
     data[date] = {};
@@ -88,6 +89,7 @@ const dataLoop = async () => {
 
 const locationLoop = async () => {
   while (true) {
+    console.log("Location Update");
     let members = await myCircle.listMembers();
     let date = Date.now();
     locations[date] = {};
@@ -99,7 +101,7 @@ const locationLoop = async () => {
         address: member.location.address1,
       };
     }
-    await new Promise((r) => setTimeout(r, config.fullDataInterval));
+    await new Promise((r) => setTimeout(r, config.locationInterval));
   }
 };
 
