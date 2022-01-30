@@ -35,7 +35,7 @@ await new Promise((r) => fileLoop(r));
 
 const dataLoop = async () => {
   while (true) {
-    console.log("Data update");
+    console.log("[" + new Date().toISOString() + "] " + "Data update");
     try {
       let members = await myCircle.listMembers();
       let date = Date.now();
@@ -86,7 +86,12 @@ const dataLoop = async () => {
       }
       await new Promise((r) => setTimeout(r, config.fullDataInterval));
     } catch (e) {
-      console.log("Data update failed retry in 15s");
+      console.log(
+        "[" +
+          new Date().toISOString() +
+          "] " +
+          "Data update failed retry in 15s"
+      );
       await new Promise((r) => setTimeout(r, 15000));
     }
   }
@@ -94,7 +99,7 @@ const dataLoop = async () => {
 
 const locationLoop = async () => {
   while (true) {
-    console.log("Location Update");
+    console.log("[" + new Date().toISOString() + "] " + "Location Update");
     try {
       let members = await myCircle.listMembers();
       let date = Date.now();
@@ -109,7 +114,12 @@ const locationLoop = async () => {
       }
       await new Promise((r) => setTimeout(r, config.locationInterval));
     } catch (e) {
-      console.log("Location update failed retry in 15s");
+      console.log(
+        "[" +
+          new Date().toISOString() +
+          "] " +
+          "Location update failed retry in 15s"
+      );
       await new Promise((r) => setTimeout(r, 15000));
     }
   }
