@@ -104,7 +104,7 @@ const locationLoop = async () => {
         locations[date][member.id] = {
           latitude: member.location.latitude,
           longitude: member.location.longitude,
-          address: member.location.address1,
+          address: member.location.name,
         };
       }
       await new Promise((r) => setTimeout(r, config.locationInterval));
