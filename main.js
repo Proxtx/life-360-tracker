@@ -82,6 +82,7 @@ const dataLoop = async () => {
           pinNumber: member.pinNumber,
           loginEmail: member.loginEmail,
           loginPhone: member.loginPhone,
+          avatar: member.avatar,
         };
       }
       await new Promise((r) => setTimeout(r, config.fullDataInterval));
