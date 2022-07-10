@@ -19,3 +19,6 @@ locations: This will store just the location and if possible its name: [...]s Ho
 7. run node .
 
 Your files will appear in data and locations
+
+# Web UI
+Use https://github.com/Proxtx/life-360-display to serve the data/locations in a web UI.
