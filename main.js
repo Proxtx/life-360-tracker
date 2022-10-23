@@ -32,18 +32,7 @@ const fileLoop = async (fileLoad) => {
   }
 };
 
-await new Promise((r) => fileLoop(r));
-
-const dataLoop = async () => {
-  while (true) {
-    let result = await dataSave();
-    if (result)
-      await new Promise((r) => setTimeout(r, config.fullDataInterval));
-    else await new Promise((r) => setTimeout(r, 15000));
-  }
-};
-
-let dataSave = async () => {
+const dataSave = async () => {
   console.log("[" + new Date().toISOString() + "] " + "Data update");
   try {
     let members = await myCircle.listMembers();
@@ -106,6 +95,17 @@ let dataSave = async () => {
     return false;
   }
 };
+
+const dataLoop = async () => {
+  while (true) {
+    let result = await dataSave();
+    if (result)
+      await new Promise((r) => setTimeout(r, config.fullDataInterval));
+    else await new Promise((r) => setTimeout(r, 15000));
+  }
+};
+
+await new Promise((r) => fileLoop(r));
 
 const locationLoop = async () => {
   while (true) {
