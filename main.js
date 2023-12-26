@@ -11,11 +11,11 @@ let client = new Life360(
 
 await client.init();
 
-let circles = await client.listCircles();
+//let circles = await client.listCircles();
 
-for (const circle of circles) {
-  console.log(circle.name);
-}
+//for (const circle of circles) {
+  //console.log(circle.name);
+//}
 
 let locations;
 let data;
