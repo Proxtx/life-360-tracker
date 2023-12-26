@@ -1,16 +1,21 @@
 import { config } from "./config.js";
 import { syncObj } from "./data.js";
-import life360 from "life360-node-api";
+import { Life360 } from "./life360.js";
 
-let client = await life360.login(config.email, config.password);
+let client = new Life360(
+  "https://api-cloudfront.life360.com/v3",
+  config.email,
+  config.password,
+  config.circleId
+);
+
+await client.init();
 
 let circles = await client.listCircles();
 
 for (const circle of circles) {
   console.log(circle.name);
 }
-
-let myCircle = circles[config.circleIndex ? config.circleIndex : 0];
 
 let locations;
 let data;
@@ -35,7 +40,7 @@ const fileLoop = async (fileLoad) => {
 const dataSave = async () => {
   console.log("[" + new Date().toISOString() + "] " + "Data update");
   try {
-    let members = await myCircle.listMembers();
+    let members = await client.getMembers();
     let date = Date.now();
     data[date] = {};
 
@@ -89,6 +94,7 @@ const dataSave = async () => {
     }
     return true;
   } catch (e) {
+    console.log(e);
     console.log(
       "[" + new Date().toISOString() + "] " + "Data Update failed retry in 15s"
     );
@@ -111,7 +117,7 @@ const locationLoop = async () => {
   while (true) {
     console.log("[" + new Date().toISOString() + "] " + "Location Update");
     try {
-      let members = await myCircle.listMembers();
+      let members = await client.getMembers();
       let date = Date.now();
       locations[date] = {};
 
